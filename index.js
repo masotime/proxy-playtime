@@ -1,7 +1,7 @@
 require('babel-register');
 console.log('+'.repeat(50));
-console.log('PRIVACY STUFF: ');
-require('./src/privacy/');
+console.log('Privacy proxy: ');
+require('./src/privacy/privacy.test');
 console.log('+'.repeat(50));
-console.log('CACHE STUFF: ');
-require('./src/cache/');
+console.log('Dynamic properties: ');
+require('./src/dynamic-property/dynamic-property.test');

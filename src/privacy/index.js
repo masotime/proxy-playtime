@@ -1,15 +1,24 @@
-import privacyEnforcer from './handler';
-
-const publicPrivateKeys = {
-	public: 'ea3049021a3eqreae09430294',
-	_private: 'eriroiasfjlsdak40392q40i9309ifds'
+// enforce the "starts with _ equals private"
+// convention in js objects
+const enforce = (key, action) => {
+	if (key[0] === '_') {
+		throw new Error(`Invalid attempt to ${action} private "${key}" property`);
+	}
 };
 
-const enforcedKeys = privacyEnforcer(publicPrivateKeys);
+const privacyEnforcer = (target) => {
+	const handler = {
+		get(targ, key) {
+			enforce(key, 'get');
+			return targ[key];
+		},
+		set(targ, key, value) {
+			enforce(key, 'set');
+			targ[key] = value;
+			return true;
+		}
+    };
+	return new Proxy(target, handler);
+};
 
-try {
-	console.log(`PUBLICKEY: ${enforcedKeys.public}`);
-	console.log(`PRIVATEKEY: ${enforcedKeys._private}`);
-} catch (err) {
-	console.error(`ERROR: ${err}`);
-}
+export default privacyEnforcer;
