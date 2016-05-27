@@ -37,6 +37,7 @@
     "babel-preset-es2015-node6": "^0.2.0",
     "babel-preset-stage-2": "^6.5.0",
     "cachish": "^1.0.0",
+    "node-fetch": "^1.5.3",
     "tap-nyan": "0.0.2",
     "xo": "^0.15.1"
   },

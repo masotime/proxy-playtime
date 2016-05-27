@@ -2,26 +2,22 @@ import test from 'ava';
 import Cachish from 'cachish';
 import dynaCache from './';
 
- const fiveMinutes = 300 * 1000;
+const fiveMinutes = 300 * 1000;
 const $ = new Cachish(fiveMinutes);
 const prox = new Proxy($, dynaCache);
 const itemName = 'dogLeash';
 
-const getItem = () => prox.itemName;
-    
 test('Dynamic properties: sync calls throw', async (t) => {
-    
     try {
         const name = await $.get('itemName');
+        t.is(name, itemName);
         // '$.get("itemName"), sync');
     } catch (err) {
         t.true(err instanceof Error, 'proxy.itemName, sync');
     }
-   
-}); 
+});
 
-test('Dynamic properties: async calls don not throw unless missing', async (t) => {
-    
+test('Dynamic properties: async calls do not throw unless missing', async (t) => {
     setTimeout(async () => {
         try {
             const name = await $.get('itemName');
@@ -50,6 +46,5 @@ test('Dynamic properties: async calls don not throw unless missing', async (t) =
            t.true(err instanceof Error, 'proxy.missingKey, 120ms');
         }
     }, 120);
-
 });
 
