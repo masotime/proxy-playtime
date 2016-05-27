@@ -1,0 +1,38 @@
+{
+  "name": "proxy-playtime",
+  "version": "1.0.0",
+  "description": "Playground for ES6 Proxy experimentation",
+  "main": "index.js",
+  "scripts": {
+    "test": "xo && ava",
+    "fix": "xo --fix",
+    "lint": "xo"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vinniegarcia/proxy-playtime.git"
+  },
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "keywords": [
+    "proxy",
+    "es6",
+    "playground",
+    "experiment"
+  ],
+  "author": "vinnie garcia <vinnie@coev.co>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vinniegarcia/proxy-playtime/issues"
+  },
+  "homepage": "https://github.com/vinniegarcia/proxy-playtime#readme",
+  "devDependencies": {
+    "ava": "^0.15.1",
+    "babel-cli": "^6.9.0",
+    "babel-preset-es2015-node6": "^0.2.0",
+    "babel-preset-stage-2": "^6.5.0",
+    "cachish": "^1.0.0",
+    "xo": "^0.15.1"
+  }
+}
